@@ -2,24 +2,27 @@
 
 <Client.Components.Public.Shared.Navbar />
 
-<main class="d-flex flex-column w-100 min-vh-90 justify-content-center align-items-center overflow-auto ">
-    <div class="container g-0">
-        <div class="row g-0">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-8 d-inline-flex flex-column bg-white-94 p-5 shadow-no-hover">
-                <h1 class="d-inline-flex">Hi There, I'm Theo!👋</h1>
-                <p class="d-inline-flex">
-                    I am a back-end software developer that specializes in .NET and Azure web development.
-                    <br />
-                    <br />
-                    Problem-solving through software is a source of enjoyment
+<main class="d-flex flex-column w-100 min-vh-100 justify-content-center align-items-center overflow-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 d-flex flex-column bg-white p-5 shadow rounded">
+                <h1 class="text-center">
+                    Hi There, I'm <span class="text-primary fw-bold">Theo!</span>👋
+                </h1>
+                <p class="text-center mt-4">
+                    I am a back-end software developer specializing in .NET and Azure web development.
                 </p>
-               @* <a href="/portfolio" class="btn btn-primary shadow btn-lg fw-bold mt-3 md-f-size-1-5">
-                    <i class="fas fa-project-diagram"></i> Projects
-                </a>*@
-                <a href="/about" class="btn btn-more-info shadow btn-lg fw-bold mt-4 md-f-size-1-5">
-                    <i class="fas fa-info-circle"></i> More information
-                </a>
+                <p class="text-center mt-2">
+                    Problem-solving through software is a source of enjoyment for me.
+                </p>
+                <div class="d-flex justify-content-center mt-4">
+                    <a href="/about" class="btn btn-primary btn-lg fw-bold mx-2 btn-block">
+                        <i class="fas fa-info-circle"></i> More Information
+                    </a>
+                    <a href="/portfolio" class="btn btn-secondary btn-lg fw-bold mx-2 btn-block">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </a>
+                </div>
             </div>
         </div>
     </div>
