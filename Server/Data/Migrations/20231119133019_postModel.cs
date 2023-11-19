@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
+#nullable disable
+
 namespace Server.Data.Migrations
 {
-    public partial class AddedASPNETIdentity : Migration
+    public partial class postModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +46,21 @@ namespace Server.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ThumbnailImagePath = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,47 +169,76 @@ namespace Server.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 1,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+            migrationBuilder.CreateTable(
+                name: "Posts",
+                columns: table => new
+                {
+                    PostId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    ThumbnailImagePath = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
+                    Excerpt = table.Column<string>(type: "TEXT", maxLength: 512, nullable: false),
+                    Content = table.Column<string>(type: "TEXT", maxLength: 65536, nullable: false),
+                    PublishDate = table.Column<string>(type: "TEXT", maxLength: 32, nullable: false),
+                    Published = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Author = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Posts", x => x.PostId);
+                    table.ForeignKey(
+                        name: "FK_Posts_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 2,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImagePath" },
+                values: new object[] { 1, "A description of category 1", "Category 1", "uploads/placeholder.jpg" });
 
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 3,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImagePath" },
+                values: new object[] { 2, "A description of category 2", "Category 2", "uploads/placeholder.jpg" });
 
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 4,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImagePath" },
+                values: new object[] { 3, "A description of category 3", "Category 3", "uploads/placeholder.jpg" });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 5,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 1, "John Doe", 1, "", "This is the excerpt for post 1. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "First post" });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 6,
-                column: "PublishDate",
-                value: "26/09/2021 12:31");
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 2, "John Doe", 2, "", "This is the excerpt for post 2. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "Second post" });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 3, "John Doe", 3, "", "This is the excerpt for post 3. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "Third post" });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 4, "John Doe", 1, "", "This is the excerpt for post 4. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "Fourth post" });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 5, "John Doe", 2, "", "This is the excerpt for post 5. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "Fifth post" });
+
+            migrationBuilder.InsertData(
+                table: "Posts",
+                columns: new[] { "PostId", "Author", "CategoryId", "Content", "Excerpt", "PublishDate", "Published", "ThumbnailImagePath", "Title" },
+                values: new object[] { 6, "John Doe", 3, "", "This is the excerpt for post 6. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.", "19/11/2023 01:30", true, "uploads/placeholder.jpg", "Sixth post" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -230,6 +276,11 @@ namespace Server.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Posts_CategoryId",
+                table: "Posts",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -250,52 +301,16 @@ namespace Server.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Posts");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 1,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
-
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 2,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
-
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 3,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
-
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 4,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
-
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 5,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
-
-            migrationBuilder.UpdateData(
-                table: "Posts",
-                keyColumn: "PostId",
-                keyValue: 6,
-                column: "PublishDate",
-                value: "18/08/2021 12:04");
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

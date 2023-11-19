@@ -11,8 +11,8 @@ using Server.Data;
 namespace Server.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20230422184632_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231119133019_postModel")]
+    partial class postModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -320,7 +320,7 @@ namespace Server.Data.Migrations
                             CategoryId = 1,
                             Content = "",
                             Excerpt = "This is the excerpt for post 1. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "First post"
@@ -332,7 +332,7 @@ namespace Server.Data.Migrations
                             CategoryId = 2,
                             Content = "",
                             Excerpt = "This is the excerpt for post 2. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "Second post"
@@ -344,7 +344,7 @@ namespace Server.Data.Migrations
                             CategoryId = 3,
                             Content = "",
                             Excerpt = "This is the excerpt for post 3. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "Third post"
@@ -356,7 +356,7 @@ namespace Server.Data.Migrations
                             CategoryId = 1,
                             Content = "",
                             Excerpt = "This is the excerpt for post 4. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "Fourth post"
@@ -368,7 +368,7 @@ namespace Server.Data.Migrations
                             CategoryId = 2,
                             Content = "",
                             Excerpt = "This is the excerpt for post 5. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "Fifth post"
@@ -380,7 +380,7 @@ namespace Server.Data.Migrations
                             CategoryId = 3,
                             Content = "",
                             Excerpt = "This is the excerpt for post 6. An excerpt is a little extraction from a larger piece of text. Sort of like a preview.",
-                            PublishDate = "22/04/2023 06:46",
+                            PublishDate = "19/11/2023 01:30",
                             Published = true,
                             ThumbnailImagePath = "uploads/placeholder.jpg",
                             Title = "Sixth post"
